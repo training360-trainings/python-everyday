@@ -12,3 +12,4 @@ if __name__ == "__main__":
     columns, data = read_csv_file("./files/employees-with-header.csv")
     print("Columns: ", columns)
     print("Data: ", data)
+    

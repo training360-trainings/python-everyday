@@ -36,6 +36,7 @@ def calculate_statistics(file_path, column_name):
             continue
 
     if len(values) > 0:
+        print(type(values[0]))
         stat["count"] = sum(values)
         stat["min"] = min(values)
         stat["max"] = max(values)
