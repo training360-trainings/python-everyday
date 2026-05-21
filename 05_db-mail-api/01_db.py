@@ -36,8 +36,8 @@ def calculate_statistics(data, column):
     
     return {
         "count": len(values),
-        "sum": sum(values) / len(values),
-        "avg": sum(values),
+        "sum": sum(values),
+        "avg": sum(values) / len(values),
         "min": min(values),
         "max": max(values)
     }

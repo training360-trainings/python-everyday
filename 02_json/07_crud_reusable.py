@@ -10,10 +10,11 @@ def find_item(items, id):
 
 
 def update_item(items, id, updated_item):
-    index = items.index(find_item(id))
-    if index is not None:
-        items[index].update(updated_item)
-    return items[index]
+    item = find_item(items, id)
+    if item is None:
+        return None
+    item.update(updated_item)
+    return item
 
 
 def create_item(items, item):
@@ -24,5 +25,7 @@ def create_item(items, item):
 
 
 def remove_item(items, id):
-    item = find_item(id)
-    items.remove(item)
+    item = find_item(items, id)
+    if item is not None:
+        items.remove(item)
+    return item

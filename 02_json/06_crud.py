@@ -1,12 +1,12 @@
-from jsonmodule import fetch_items
 import json
-
-employees = fetch_items("./files/new_employees.json")
 
 
 def fetch_items(file):
-    json_file = open(file=file, mode="r", encoding="utf-8")
-    return json.load(json_file)
+    with open(file=file, mode="r", encoding="utf-8") as json_file:
+        return json.load(json_file)
+
+
+employees = fetch_items("./files/new_employees.json")
 
 
 def get_all_employees():
@@ -21,10 +21,11 @@ def find_employee(id):
 
 
 def update_employee(id, updated_employee):
-    index = employees.index(find_employee(id))
-    if index is not None:
-        employees[index].update(updated_employee)
-    return employees[index]
+    employee = find_employee(id)
+    if employee is None:
+        return None
+    employee.update(updated_employee)
+    return employee
 
 
 def create_employee(employee):
@@ -36,7 +37,9 @@ def create_employee(employee):
 
 def remove_employee(id):
     employee = find_employee(id)
-    employees.remove(employee)
+    if employee is not None:
+        employees.remove(employee)
+    return employee
 
 
 if __name__ == "__main__":
