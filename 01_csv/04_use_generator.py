@@ -2,14 +2,12 @@ import csv
 
 
 def read_csv_file_generator(file_path):
-    f = open(file_path, "r")
-    reader = csv.reader(f)
-    columns = next(reader, None)
+    with open(file_path, "r") as f:
+        reader = csv.reader(f)
+        columns = next(reader, None)
 
-    yield columns
-    yield from reader
-
-    f.close()
+        yield columns
+        yield from reader
 
 
 if __name__ == "__main__":
